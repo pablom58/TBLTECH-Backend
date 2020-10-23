@@ -43,7 +43,7 @@ router.get('/item/:id',async (req,res) => {
         let data = await ContactController.get({
             contact_id: req.params.id,
         })
-        response.success(res,data,200,'Contact Created')
+        response.success(res,data,200,'Contact Found')
     }catch(error){
         response.error(res,error.statusCode,error.message)
     }

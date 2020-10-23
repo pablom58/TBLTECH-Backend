@@ -1,6 +1,7 @@
 const Contact = require('./store')
 
 const { error } = require('../../network/error')
+const sendMail = require('../../utils/email')
 
 //Get page of Contacts
 const getPage = async data => {
@@ -18,7 +19,7 @@ const getPage = async data => {
     const pages = await Contact.countDocuments()
     
     return {
-        currentPage: page,
+        currentPage: parseInt(page),
         prevPage: parseInt(page) - 1,
         nextPage: parseInt(page) + 1,
         pages: Math.ceil(pages / contactsPerPage),
@@ -66,6 +67,8 @@ const add = async data => {
     })
 
     await contact.save()
+
+    await sendMail({email})
 
     return true
 }
