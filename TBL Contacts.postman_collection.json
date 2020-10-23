@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "7961c14a-33cc-47d4-82d0-8731ff129f81",
+		"name": "TBL Contacts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e6026fa-5222-4050-8db4-d1c5e7d05795",
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"console.log(\"auto insert token in env vars\");\r",
+									"if (data.status === 200) {\r",
+									"    postman.setEnvironmentVariable(\"token\", data.data.token);\r",
+									"} else {\r",
+									"    console.log(\"can not auto insert token in vars, status code not ok\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"phoneNumber\": \"12345\",\r\n    \"password\": \"2810\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5b98fd59-a319-4b0d-bd86-df1bad002d6d",
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"console.log(\"auto insert token in env vars\");\r",
+									"if (data.status === 200) {\r",
+									"    postman.setEnvironmentVariable(\"token\", data.data.token);\r",
+									"} else {\r",
+									"    console.log(\"can not auto insert token in vars, status code not ok\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"password\": \"2810\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Miguel\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
