@@ -84,7 +84,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"password\": \"2810\"\r\n}"
+							"raw": "{\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"password\": \"osmary\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/user/login",
@@ -263,7 +263,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablomvillamizar@gmail.com\",\r\n    \"phoneNumber\": \"12345\"\r\n}"
+							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"phoneNumber\": \"12345\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/contact",
@@ -352,6 +352,39 @@
 					"response": []
 				},
 				{
+					"name": "Filter Contacts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pablo@\",\r\n    \"page\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contact/search",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Contact",
 					"request": {
 						"method": "GET",
@@ -368,7 +401,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/contact/item/5f926272ef1df53628a61ba1",
+							"raw": "{{url}}/contact/item/5f926272ef1df53628a61ba1?email=pablo",
 							"host": [
 								"{{url}}"
 							],
@@ -376,6 +409,12 @@
 								"contact",
 								"item",
 								"5f926272ef1df53628a61ba1"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "pablo"
+								}
 							]
 						}
 					},
