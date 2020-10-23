@@ -68,7 +68,10 @@ const add = async data => {
 
     await contact.save()
 
-    await sendMail({email})
+    await sendMail({
+        email,
+        text: 'We added you in our contact list. Thank you'
+    })
 
     return true
 }

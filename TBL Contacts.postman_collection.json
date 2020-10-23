@@ -39,7 +39,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"phoneNumber\": \"12345\",\r\n    \"password\": \"2810\"\r\n}"
+							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablov806@gmail.com\",\r\n    \"phoneNumber\": \"12345\",\r\n    \"password\": \"2810\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/user",
@@ -168,6 +168,64 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Request reset password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"pablo@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth/request/reset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"request",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hash\": \"80be16a03ff674fda852f54769a011b5643916cdcaece6688118c067fd05f357\",\r\n    \"password\": \"pmvs\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth/reset/password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"reset",
+								"password"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -205,7 +263,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"phoneNumber\": \"12345\"\r\n}"
+							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablomvillamizar@gmail.com\",\r\n    \"phoneNumber\": \"12345\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/contact",

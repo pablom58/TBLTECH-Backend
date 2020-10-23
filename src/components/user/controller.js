@@ -42,6 +42,7 @@ const add = async data => {
     })
 
     user.password = await auth.encryptPassword(user.password)
+    user.hash = auth.generateHash(`${user._id} ${user.email}`)
 
     await user.save()
 

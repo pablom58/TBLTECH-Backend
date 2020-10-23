@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const crypto = require('crypto')
 
 const config = require('../config')
 
@@ -21,8 +22,14 @@ const generateToken = data => jwt.sign(
     }
 )
 
+//Generating Hash
+const generateHash = data => crypto.createHmac('sha256',config.SECRET_HASH)
+                                    .update(data)
+                                    .digest('hex')
+
 module.exports = {
     encryptPassword,
     validatePassword,
     generateToken,
+    generateHash
 }
