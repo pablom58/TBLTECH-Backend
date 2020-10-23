@@ -92,6 +92,7 @@ const update = async data => {
         lastName,
         email,
         phoneNumber,
+        password,
     } = data
 
     if(!user_id)
@@ -102,11 +103,17 @@ const update = async data => {
     if(!user)
         throw error(400,'An error ocurred please logout and try again')
 
+    let newPassword
+
+    if(password)
+        newPassword = await auth.encryptPassword(password)
+
     let newData = {
         firstName: firstName || user.firstName,
         lastName: lastName || user.lastName,
         email: email || user.email,
         phoneNumber: phoneNumber || user.phoneNumber,
+        password: newPassword || user.password
     }
 
     await User.updateOne({_id: user_id}, newData)

@@ -20,6 +20,7 @@ const generateResetLink = async data => {
 
     await sendMail({
         email,
+        subject: 'TBL Contacs by PMVS Reset Password',
         text: `You can reset your password following the link: http://${host}:8080/password/reset/${user.hash}`
     })
 }

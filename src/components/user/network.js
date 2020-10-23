@@ -12,7 +12,7 @@ const router = Router()
 router.get('/' , ensureToken , async (req,res) => {
     try{
         let data = await UserController.get(req.user_id)
-        response.success(res,data,200,'User Created')
+        response.success(res,data,200,'User Information')
     }catch(error){
         response.error(res,error.statusCode,error.message)
     }
@@ -45,7 +45,7 @@ router.put('/' , ensureToken , async (req,res) => {
             user_id: req.user_id,
             ...req.body
         })
-        response.success(res,data,200,'User Logged In')
+        response.success(res,data,200,'User Updated')
     }catch(error){
         response.error(res,error.statusCode,error.message)
     }

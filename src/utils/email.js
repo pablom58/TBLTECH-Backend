@@ -16,7 +16,7 @@ const sendMail = async data => {
     let email = await transporter.sendMail({
         from: config.USER_EMAIL,
         to: data.email,
-        subject: 'Added to tbl contacts by pmvs',
+        subject: data.subject,
         text: data.text,
         html: `<p>${data.text}</p>`,
     })

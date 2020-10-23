@@ -16,7 +16,7 @@ const getPage = async data => {
                                     .skip((contactsPerPage * page) - contactsPerPage)
                                     .limit(contactsPerPage)
 
-    const pages = await Contact.countDocuments()
+    const pages = await Contact.find({user_id}).countDocuments()
     
     return {
         currentPage: parseInt(page),
@@ -70,6 +70,7 @@ const add = async data => {
 
     await sendMail({
         email,
+        subject: 'Added to TBL contacts by PMVS',
         text: 'We added you in our contact list. Thank you'
     })
 
