@@ -145,9 +145,212 @@
 					"name": "Get User Information",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "Create Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "478c821e-82ee-4e40-a707-d8a1209a7636",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Pablo\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"phoneNumber\": \"12345\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contact",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bd91d55c-b48e-40af-bc37-1139e11db960",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contact_id\": \"5f926272ef1df53628a61ba1\",\r\n    \"firstName\": \"Pablo356\",\r\n    \"lastName\": \"Villamizar\",\r\n    \"email\": \"pablo@gmail.com\",\r\n    \"phoneNumber\": \"12345\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contact",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contact Page",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/contact/list/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact",
+								"list",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contact",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/contact/item/5f926272ef1df53628a61ba1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact",
+								"item",
+								"5f926272ef1df53628a61ba1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contact_id\": \"5f9264ebe4f7421f48e7444b\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contact",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact"
+							]
 						}
 					},
 					"response": []
