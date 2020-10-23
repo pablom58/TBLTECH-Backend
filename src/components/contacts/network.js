@@ -19,6 +19,33 @@ router.get('/list/:page',async (req,res) => {
     }
 })
 
+//Get all contacts
+router.get('/list/:page',async (req,res) => {
+    try{
+        let data = await ContactController.getPage({
+            user_id: req.user_id,
+            page: req.params.page || 1
+        })
+        response.success(res,data,200,'Contact List Success')
+    }catch(error){
+        response.error(res,error.statusCode,error.message)
+    }
+})
+
+//Get contacts filter
+router.post('/search',async (req,res) => {
+    try{
+        let data = await ContactController.filter({
+            user_id: req.user_id,
+            email: req.body.email,
+            page: req.body.page || 1
+        })
+        response.success(res,data,200,'Contact List Success')
+    }catch(error){
+        response.error(res,error.statusCode,error.message)
+    }
+})
+
 //Create Contact
 router.post('/',async (req,res) => {
     try{

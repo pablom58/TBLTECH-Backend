@@ -18,6 +18,7 @@ app.set('port',config.PORT)
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(cors())
+app.use(express.static(path.join(__dirname,'public')))
 
 //routing the server
 router(app)

@@ -2,6 +2,7 @@ const User = require('../user/store')
 
 const sendEmail = require('../../utils/email')
 
+const config = require('../../config')
 const { error } = require('../../network/error')
 const sendMail = require('../../utils/email')
 const auth = require('../../auth')
@@ -21,7 +22,7 @@ const generateResetLink = async data => {
     await sendMail({
         email,
         subject: 'TBL Contacs by PMVS Reset Password',
-        text: `You can reset your password following the link: http://${host}:8080/password/reset/${user.hash}`
+        text: `You can reset your password following the link: http://${host}:${config.PORT}/password/reset/${user.hash}`
     })
 }
 

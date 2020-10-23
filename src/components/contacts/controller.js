@@ -42,6 +42,33 @@ const get = async data => {
     return contact
 }
 
+//Get page of Contacts
+const filter = async data => {
+    const { email , user_id , page } = data
+
+    if(!user_id)
+        throw error(400,'An error ocurred, please logout and try again')
+
+    if(!email)
+        throw error(400,'Expected email')
+
+    let contactsPerPage = 10;
+
+    const contacts = await Contact.find({user_id , email: {'$regex': email}})
+                                    .skip((contactsPerPage * page) - contactsPerPage)
+                                    .limit(contactsPerPage)
+
+    const pages = await Contact.find({user_id , email: {'$regex': email}}).countDocuments()
+
+    return {
+        currentPage: parseInt(page),
+        prevPage: parseInt(page) - 1,
+        nextPage: parseInt(page) + 1,
+        pages: Math.ceil(pages / contactsPerPage),
+        contacts,
+    }
+}
+
 //Create contact
 const add = async data => {
     const {
@@ -131,5 +158,6 @@ module.exports = {
     get,
     add,
     update,
-    remove
+    remove,
+    filter
 }
